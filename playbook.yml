@@ -1,0 +1,23 @@
+---
+- name: Deploy webpage
+  hosts: servers
+  become: true
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Apache
+      service:
+        name: apache2
+        state: started
+        enabled: true
+
+    - name: Copy web files
+      copy:
+        src: ./src/
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0755'
