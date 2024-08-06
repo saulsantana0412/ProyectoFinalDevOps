@@ -21,3 +21,11 @@
         owner: www-data
         group: www-data
         mode: '0755'
+
+    - name: Copy web files
+      copy:
+        src: index.html
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0755'
